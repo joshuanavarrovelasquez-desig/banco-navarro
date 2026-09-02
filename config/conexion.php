@@ -1,5 +1,5 @@
 <?php
-class Database {
+class conexion {
     public static function conectar() {
         $conexion = new mysqli("localhost", "root", "", "banco_navarro");
         if ($conexion->connect_error) {
