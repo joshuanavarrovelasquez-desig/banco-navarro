@@ -3,7 +3,7 @@ class UsuarioModel {
     private $db;
 
     public function __construct() {
-        $this->db = Database::conectar();
+        $this->db = conexion::conectar();
     }
 
     public function verificarLogin($usuario, $password) {
