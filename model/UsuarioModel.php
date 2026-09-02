@@ -15,5 +15,16 @@ class UsuarioModel {
         $sql = "UPDATE usuarios SET saldo = $nuevoSaldo WHERE $id = $id";
         return $this->db->query($sql);
     }
+    public function listarUsuarios() {
+    $sql = "SELECT id, usuarios, saldo FROM usuarios";
+    $resultado = $this->db->query($sql);
+    $usuarios = [];
+    if ($resultado) {
+        while ($fila = $resultado->fetch_assoc()) {
+            $usuarios[] = $fila;
+        }
+    }
+    return $usuarios;
+}
 }
 ?>
