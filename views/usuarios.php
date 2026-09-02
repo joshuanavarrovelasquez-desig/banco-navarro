@@ -2,9 +2,9 @@
 <?php include 'views/partials/nav.php'; ?>
 
 <div class="container mt-4">
-    <h2 class="mb-3">Listado de Usuarios</h2>
-    <div class="table-responsive shadow-sm">
-        <table class="table table-striped table-hover align-middle">
+    <h2>Listado de Usuarios</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -14,11 +14,11 @@
             </thead>
             <tbody>
                 <?php if (!empty($usuarios)): ?>
-                    <?php foreach ($usuarios as $usuario): ?>
+                    <?php foreach ($usuarios as $u): ?>
                         <tr>
-                            <td><?= $usuario['id'] ?></td>
-                            <td><?= htmlspecialchars($usuario['usuarios']) ?></td>
-                            <td>$<?= number_format($usuario['saldo'], 2) ?></td>
+                            <td><?= $u['id'] ?></td>
+                            <td><?= htmlspecialchars($u['usuario'] ?? $u['usuarios'] ?? '') ?></td>
+                            <td>$<?= number_format($u['saldo'], 2) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
