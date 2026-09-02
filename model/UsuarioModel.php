@@ -9,22 +9,24 @@ class UsuarioModel {
     public function verificarLogin($usuario, $password) {
         $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND password = '$password'";
         $resultado = $this->db->query($sql);
-        return $resultado->fetch_assoc();
+        return $resultado ? $resultado->fetch_assoc() : null;
     }
+
     public function actualizarSaldo($id, $nuevoSaldo) {
-        $sql = "UPDATE usuarios SET saldo = $nuevoSaldo WHERE $id = $id";
+        $sql = "UPDATE usuarios SET saldo = $nuevoSaldo WHERE id = $id";
         return $this->db->query($sql);
     }
+
     public function listarUsuarios() {
-    $sql = "SELECT id, usuarios, saldo FROM usuarios";
-    $resultado = $this->db->query($sql);
-    $usuarios = [];
-    if ($resultado) {
-        while ($fila = $resultado->fetch_assoc()) {
-            $usuarios[] = $fila;
+       
+        $sql = "SELECT id, usuario, saldo FROM usuarios";
+        $resultado = $this->db->query($sql);
+        $usuarios = [];
+        if ($resultado) {
+            while ($fila = $resultado->fetch_assoc()) {
+                $usuarios[] = $fila;
+            }
         }
+        return $usuarios;
     }
-    return $usuarios;
 }
-}
-?>
