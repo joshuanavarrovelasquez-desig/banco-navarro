@@ -10,6 +10,16 @@
         </div>
     <?php endif; ?>
 
+    <!-- ========================================== -->
+    <!-- INTEGRACIÓN PROPIA: Formulario de Retiro   -->
+    <!-- ========================================== -->
+    <form action="index.php" method="GET" style="margin: 20px 0;">
+        <input type="hidden" name="accion" value="retiro">
+        Monto a retirar: <input type="number" step="0.01" name="monto" required>
+        <button type="submit">Retirar</button>
+    </form>
+    <!-- ========================================== -->
+
     <p>Saldo actual: $<?= number_format($saldoActual ?? 0, 2) ?></p>
     <p>Nuevo saldo: $<?= number_format($nuevoSaldo ?? 0, 2) ?></p>
 </div>
